@@ -6,5 +6,6 @@ add_executable(main
     main.c
 
     data.c
+    sort.c
 )
 target_compile_features(main PUBLIC c_std_17)
