@@ -18,7 +18,9 @@ int main() {
 
     ReadData(&table, &n, filename);
 
-    // ...
+    for (int i = 0; i < 4; ++i) {
+        printf("%s %d\n", table[i].name, table[i].pop);
+    }
     printf("n=%d\n", n);
 
     free(table);

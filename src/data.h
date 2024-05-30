@@ -15,8 +15,8 @@
 #define CITY_NAME_SIZE 32
 
 struct City {
-    int pop;                    // population
     char name[CITY_NAME_SIZE];  // city_ascii
+    int pop;                    // population
 };
 
 void ReadData(struct City** table, int* n, char filename[]);
