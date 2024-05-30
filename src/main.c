@@ -11,13 +11,16 @@
 #include "data.h"
 
 int main() {
-    FILE* fp = fopen("data/worldcities.csv", "r");
-    if (fp == NULL) {
-        printf("ERROR: Could not open the file.\n");
-        exit(1);
-    }
-    printf("n=%d\n", CountNumOfRecords_(fp));
-    fclose(fp);
+    char filename[] = "data/worldcities.csv";
 
+    struct City* table = NULL;
+    int n = 0;
+
+    ReadData(&table, &n, filename);
+
+    // ...
+    printf("n=%d\n", n);
+
+    free(table);
     return 0;
 }

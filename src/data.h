@@ -8,7 +8,6 @@
 #ifndef A2AF_DATA_H_
 #define A2AF_DATA_H_
 
-// just for debugging
 #include <stdio.h>
 
 #define BUF_SIZE 240
@@ -20,7 +19,6 @@ struct City {
     char name[CITY_NAME_SIZE];  // city_ascii
 };
 
-// just for debugging
-int CountNumOfRecords_(FILE* fp);
+void ReadData(struct City** table, int* n, char filename[]);
 
 #endif  // A2AF_DATA_H_
