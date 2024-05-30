@@ -18,10 +18,7 @@ int main() {
 
     ReadData(&table, &n, filename);
 
-    for (int i = 0; i < 100; ++i) {
-        PrintCity(&table[i]);
-    }
-    printf("n=%d\n", n);
+    DisplayTable(table, n);
 
     free(table);
     return 0;

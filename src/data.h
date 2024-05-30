@@ -28,5 +28,6 @@ struct City {
 void PrintCity(struct City* city);
 
 void ReadData(struct City** table, int* n, char filename[]);
+void DisplayTable(struct City* table, int n);
 
 #endif  // A2AF_DATA_H_

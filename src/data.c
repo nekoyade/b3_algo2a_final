@@ -97,3 +97,43 @@ void ReadData(struct City** table, int* n, char filename[]) {
     ReadValues_(table, fp);
     fclose(fp);
 }
+
+void DisplayTable(struct City* table, int n) {
+    const int max_records = 25;
+    int min_index = 0;
+
+    char command = 'n';
+
+    int exits = 0;
+    while (!exits) {
+        for (int i = 0; i < max_records; ++i) {
+            printf("  ");
+            PrintCity(&table[min_index + i]);
+        }
+        printf(
+            "    <%d - %d / %d>\n",
+            min_index, min_index + max_records - 1, n - 1);
+        printf("    [n] next  [p] previous  [e] exit\n? ");
+        scanf(" %c", &command);
+
+        switch (command) {
+        case 'e':
+            exits = 1;
+            break;
+        case 'p':
+            min_index -= max_records;
+            if (min_index < 0) {
+                min_index = 0;
+            }
+            break;
+        case 'n':
+        default:
+            min_index += max_records;
+            if (min_index >= n) {
+                exits = 1;
+            }
+            break;
+        }
+    }
+    printf("    EXIT > Display Table\n");
+}
