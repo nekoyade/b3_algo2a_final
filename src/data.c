@@ -11,6 +11,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+void PrintCity(struct City* city) {
+    printf(
+        "%-3s  %-32s  Pop: %8d\n",
+        city->country,
+        city->name,
+        city->pop);
+}
+
 int CountNumOfRecords_(FILE* fp) {
     int n = 0;
     char buf[BUF_SIZE];
@@ -29,11 +37,11 @@ void ReadValues_(struct City** table, FILE* fp) {
     char city_ascii[CITY_NAME_SIZE];
     float lat;                          // Unused
     float lng;                          // Unused
-    char country[BUF_SIZE];             // Unused
-    char iso2[3];                       // Unused
-    char iso3[4];                       // Unused
-    char admin_name[BUF_SIZE];          // Unused
-    char capital[BUF_SIZE];             // Unused
+    char country[CTRY_NAME_SIZE];       // Unused
+    char iso2[ISO2_NAME_SIZE];          // Unused
+    char iso3[ISO3_NAME_SIZE];
+    char admin_name[ADMN_NAME_SIZE];    // Unused
+    char capital[CPTL_NAME_SIZE];       // Unused
     int population;
     int id;                             // Unused
 
@@ -65,6 +73,8 @@ void ReadValues_(struct City** table, FILE* fp) {
 
         strncpy((*table)[n].name, city_ascii, CITY_NAME_SIZE - 1);
         (*table)[n].name[CITY_NAME_SIZE - 1] = '\0';
+        strncpy((*table)[n].country, iso3, ISO3_NAME_SIZE - 1);
+        (*table)[n].country[ISO3_NAME_SIZE - 1] = '\0';
         (*table)[n].pop = population;
 
         ++n;
