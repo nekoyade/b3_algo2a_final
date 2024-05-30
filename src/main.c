@@ -6,8 +6,18 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+
+#include "data.h"
 
 int main() {
-    printf("hello world\n");
+    FILE* fp = fopen("data/worldcities.csv", "r");
+    if (fp == NULL) {
+        printf("ERROR: Could not open the file.\n");
+        exit(1);
+    }
+    printf("n=%d\n", CountNumOfRecords_(fp));
+    fclose(fp);
+
     return 0;
 }
