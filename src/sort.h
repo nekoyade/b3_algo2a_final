@@ -8,6 +8,6 @@
 #ifndef A2AF_SORT_H_
 #define A2AF_SORT_H_
 
-// ...
+void ClearCounters();
 
 #endif  // A2AF_SORT_H_
