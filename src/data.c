@@ -56,8 +56,8 @@ void ReadValues_(struct City** table, FILE* fp) {
         sscanf_s(token, "\"%f\"",     &lat,        sizeof(int));
         token = strtok(NULL, ",");
         sscanf_s(token, "\"%f\"",     &lng,        sizeof(int));
-        token = strtok(NULL, ",");
-        sscanf_s(token, "\"%[^\"]\"", country,     sizeof(country));
+        token = strtok(NULL, "\"");
+        sscanf_s(token, "%s",         country,     sizeof(country));
         token = strtok(NULL, ",");
         sscanf_s(token, "\"%[^\"]\"", iso2,        sizeof(iso2));
         token = strtok(NULL, ",");
