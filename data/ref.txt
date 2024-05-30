@@ -1,0 +1,5 @@
+[Dataset]
+World Cities Database (Basic).
+    SimpleMaps.com; Pareto Software, LLC.
+    available at https://simplemaps.com/data/world-cities
+    (accessed 2024-05-31).
