@@ -22,7 +22,10 @@
 struct City {
     char name[CITY_NAME_SIZE];     // city_ascii
     char country[ISO3_NAME_SIZE];  // iso3
-    int pop;                       // population
+
+    int pop;    // population
+    float lat;  // latitude
+    float lng;  // longitude
 };
 
 void PrintCity(struct City* city);

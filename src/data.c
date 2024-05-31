@@ -13,10 +13,12 @@
 
 void PrintCity(struct City* city) {
     printf(
-        "%-3s  %-32s  Pop: %8d\n",
+        "%-3s  %-32s  Pop: %8d  (%8.3f, %8.3f)\n",
         city->country,
         city->name,
-        city->pop);
+        city->pop,
+        city->lat,
+        city->lng);
 }
 
 int CountNumOfRecords_(FILE* fp) {
@@ -35,8 +37,8 @@ void ReadValues_(struct City** table, FILE* fp) {
 
     char city[CITY_NAME_SIZE];          // Unused
     char city_ascii[CITY_NAME_SIZE];
-    float lat;                          // Unused
-    float lng;                          // Unused
+    float lat;
+    float lng;
     char country[CTRY_NAME_SIZE];       // Unused
     char iso2[ISO2_NAME_SIZE];          // Unused
     char iso3[ISO3_NAME_SIZE];
@@ -75,7 +77,10 @@ void ReadValues_(struct City** table, FILE* fp) {
         (*table)[n].name[CITY_NAME_SIZE - 1] = '\0';
         strncpy((*table)[n].country, iso3, ISO3_NAME_SIZE - 1);
         (*table)[n].country[ISO3_NAME_SIZE - 1] = '\0';
+
         (*table)[n].pop = population;
+        (*table)[n].lat = lat;
+        (*table)[n].lng = lng;
 
         ++n;
     }
