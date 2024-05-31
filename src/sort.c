@@ -78,3 +78,15 @@ void BubbleSort(struct City* table, int n, char mode, char order) {
         }
     }
 }
+
+void SelectionSort(struct City* table, int n, char mode, char order) {
+    for (int i = 0; i < n - 1; ++i) {
+        int min_idx = i;
+        for (int j = i + 1; j < n; ++j) {
+            if (Compare_(&table[min_idx], &table[j], mode, order) == 1) {
+                min_idx = j;
+            }
+        }
+        Swap_(&table[i], &table[min_idx]);
+    }
+}
