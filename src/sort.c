@@ -57,3 +57,8 @@ void Swap_(struct City* a, struct City* b) {
     *a = *b;
     *b = tmp;
 }
+
+void Copy_(struct City const* src, struct City* dst) {
+    ++copy_counter;
+    *dst = *src;
+}

@@ -22,7 +22,7 @@ int main() {
     for (int i = 0; i < 3; ++i) {
         PrintCity(&table[i]);
     }
-    Swap_(&table[0], &table[1]);
+    Copy_(&table[0], &table[1]);
     for (int i = 0; i < 3; ++i) {
         PrintCity(&table[i]);
     }

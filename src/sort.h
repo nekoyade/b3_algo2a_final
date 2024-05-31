@@ -13,6 +13,6 @@
 void ClearCounters();
 
 // just for debugging
-void Swap_(struct City* a, struct City* b);
+void Copy_(struct City const* src, struct City* dst);
 
 #endif  // A2AF_SORT_H_
