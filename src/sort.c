@@ -19,6 +19,12 @@ void ClearCounters() {
     copy_counter = 0;
 }
 
+void PrintCounters() {
+    printf("  Compare: %d", comp_counter);
+    printf("  Swap: %d", swap_counter);
+    printf("  Copy: %d\n", copy_counter);
+}
+
 int Compare_(
         struct City const* a, struct City const* b, char mode, char order) {
     ++comp_counter;

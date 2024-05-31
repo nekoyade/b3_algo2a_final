@@ -19,13 +19,14 @@ int main() {
 
     ReadData(&table, &n, filename);
 
-    for (int i = 0; i < 3; ++i) {
-        PrintCity(&table[i]);
-    }
+    ClearCounters();
+    PrintCounters();
+    Compare_(&table[0], &table[1], 'p', 'a');
+    Swap_(&table[0], &table[1]);
     Copy_(&table[0], &table[1]);
-    for (int i = 0; i < 3; ++i) {
-        PrintCity(&table[i]);
-    }
+    PrintCounters();
+    ClearCounters();
+    PrintCounters();
 
     free(table);
     return 0;
