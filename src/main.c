@@ -19,15 +19,13 @@ int main() {
 
     ReadData(&table, &n, filename);
 
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < 3; ++i) {
         PrintCity(&table[i]);
     }
-    printf("%d\n", City_Compare_(&table[0], &table[1], 'p', 'a'));
-    printf("%d\n", City_Compare_(&table[0], &table[1], 'p', 'd'));
-    printf("%d\n", City_Compare_(&table[0], &table[1], 'a', 'a'));
-    printf("%d\n", City_Compare_(&table[0], &table[1], 'a', 'd'));
-    printf("%d\n", City_Compare_(&table[0], &table[1], 'n', 'a'));
-    printf("%d\n", City_Compare_(&table[0], &table[1], 'n', 'd'));
+    Swap_(&table[0], &table[1]);
+    for (int i = 0; i < 3; ++i) {
+        PrintCity(&table[i]);
+    }
 
     free(table);
     return 0;

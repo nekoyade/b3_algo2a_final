@@ -19,7 +19,7 @@ void ClearCounters() {
     copy_counter = 0;
 }
 
-int City_Compare_(
+int Compare_(
         struct City const* a, struct City const* b, char mode, char order) {
     ++comp_counter;
     float a_val, b_val;
@@ -48,4 +48,12 @@ int City_Compare_(
         break;
     }
     return result;
+}
+
+void Swap_(struct City* a, struct City* b) {
+    ++swap_counter;
+    copy_counter += 3;
+    struct City tmp = *a;
+    *a = *b;
+    *b = tmp;
 }

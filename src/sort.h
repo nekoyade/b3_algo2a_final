@@ -13,7 +13,6 @@
 void ClearCounters();
 
 // just for debugging
-int City_Compare_(
-        struct City const* a, struct City const* b, char mode, char order);
+void Swap_(struct City* a, struct City* b);
 
 #endif  // A2AF_SORT_H_
