@@ -13,10 +13,6 @@
 void ClearCounters();
 void PrintCounters();
 
-// just for debugging
-int Compare_(
-        struct City const* a, struct City const* b, char mode, char order);
-void Swap_(struct City* a, struct City* b);
-void Copy_(struct City const* src, struct City* dst);
+void BubbleSort(struct City* table, int n, char mode, char order);
 
 #endif  // A2AF_SORT_H_

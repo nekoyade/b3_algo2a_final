@@ -20,13 +20,10 @@ int main() {
     ReadData(&table, &n, filename);
 
     ClearCounters();
+    BubbleSort(table, 100, 'n', 'd');
     PrintCounters();
-    Compare_(&table[0], &table[1], 'p', 'a');
-    Swap_(&table[0], &table[1]);
-    Copy_(&table[0], &table[1]);
-    PrintCounters();
-    ClearCounters();
-    PrintCounters();
+
+    DisplayTable(table, n);
 
     free(table);
     return 0;

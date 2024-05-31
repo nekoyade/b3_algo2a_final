@@ -68,3 +68,13 @@ void Copy_(struct City const* src, struct City* dst) {
     ++copy_counter;
     *dst = *src;
 }
+
+void BubbleSort(struct City* table, int n, char mode, char order) {
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = n - 1; j > i; --j) {
+            if (Compare_(&table[j - 1], &table[j], mode, order) == 1) {
+                Swap_(&table[j - 1], &table[j]);
+            }
+        }
+    }
+}
