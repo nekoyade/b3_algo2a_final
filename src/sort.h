@@ -8,6 +8,12 @@
 #ifndef A2AF_SORT_H_
 #define A2AF_SORT_H_
 
+#include "data.h"
+
 void ClearCounters();
+
+// just for debugging
+int City_Compare_(
+        struct City const* a, struct City const* b, char mode, char order);
 
 #endif  // A2AF_SORT_H_
