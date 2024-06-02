@@ -184,3 +184,35 @@ void MergeSort(struct City* table, int n, char mode, char order) {
     MergeSortImpl_(table, 0, n - 1, work, mode, order);
     free(work);
 }
+
+void HeapSortImpl_(
+        struct City* table, int left, int right, char mode, char order) {
+    struct City root;
+    Copy_(&table[left], &root);
+    int parent, child;
+    for (parent = left; parent < (right + 1)/2; parent = child) {
+        int l = 2*parent + 1;
+        int r = l + 1;
+        if ((r <= right) && (Compare_(
+                &table[r], &table[l], mode, order) == 1)) {
+            child = r;
+        } else {
+            child = l;
+        }
+        if (Compare_(&root, &table[child], mode, order) == 1) {
+            break;
+        }
+        Copy_(&table[child], &table[parent]);
+    }
+    Copy_(&root, &table[parent]);
+}
+
+void HeapSort(struct City* table, int n, char mode, char order) {
+    for (int i = n/2 - 1; i >= 0; --i) {
+        HeapSortImpl_(table, i, n - 1, mode, order);
+    }
+    for (int i = n - 1; i > 0; --i) {
+        Swap_(&table[0], &table[i]);
+        HeapSortImpl_(table, 0, i - 1, mode, order);
+    }
+}

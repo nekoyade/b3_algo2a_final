@@ -20,7 +20,7 @@ int main() {
     ReadData(&table, &n, filename);
 
     ClearCounters();
-    MergeSort(table, 100, 'n', 'd');
+    HeapSort(table, 100, 'n', 'a');
     PrintCounters();
 
     DisplayTable(table, n);
