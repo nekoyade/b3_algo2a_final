@@ -10,6 +10,7 @@
 #include "sort.h"
 
 #include <stdlib.h>
+#include <time.h>
 
 #include "data.h"
 
@@ -243,4 +244,12 @@ int CheckOrder(struct City* table, int n, char mode, char order) {
         }
     }
     return 1;
+}
+
+void ShuffleTable(struct City* table, int n, unsigned int seed) {
+    srand(seed);
+    for (int i = 0; i < n - 1; ++i) {
+        int k = i + (rand() + rand()) % (n - i);
+        Swap_(&table[i], &table[k]);
+    }
 }

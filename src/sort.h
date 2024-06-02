@@ -23,4 +23,6 @@ void HeapSort(struct City* table, int n, char mode, char order);
 
 int CheckOrder(struct City* table, int n, char mode, char order);
 
+void ShuffleTable(struct City* table, int n, unsigned int seed);
+
 #endif  // A2AF_SORT_H_
