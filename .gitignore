@@ -1,5 +1,5 @@
-*.csv
 *.exe
 
 build/
 data/worldcities.csv
+out/*.csv

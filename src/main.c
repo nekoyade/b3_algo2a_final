@@ -58,6 +58,18 @@ void SaveSortingTime(
     fclose(fp);
 }
 
+void IterateSaveSortingTime(
+        struct City* table, int n,
+        void (*sort)(struct City*, int, char, char),
+        int trials, char caption[]) {
+    SaveSortingTime(table, n, sort, 'p', 'd', trials, caption);
+    SaveSortingTime(table, n, sort, 'p', 'a', trials, caption);
+    SaveSortingTime(table, n, sort, 'a', 'd', trials, caption);
+    SaveSortingTime(table, n, sort, 'a', 'a', trials, caption);
+    SaveSortingTime(table, n, sort, 'n', 'd', trials, caption);
+    SaveSortingTime(table, n, sort, 'n', 'a', trials, caption);
+}
+
 int main() {
     char filename[] = "data/worldcities.csv";
 
@@ -66,7 +78,13 @@ int main() {
 
     ReadData(&table, &n, filename);
 
-    SaveSortingTime(table, n, QuickSort, 'p', 'd', 3, "quick");
+    IterateSaveSortingTime(table, n, BubbleSort, 3, "bubble");
+    IterateSaveSortingTime(table, n, SelectionSort, 3, "select");
+    IterateSaveSortingTime(table, n, InsertionSort, 3, "insert");
+    IterateSaveSortingTime(table, n, ShellSort, 3, "shell");
+    IterateSaveSortingTime(table, n, QuickSort, 3, "quick");
+    IterateSaveSortingTime(table, n, MergeSort, 3, "merge");
+    IterateSaveSortingTime(table, n, HeapSort, 3, "heap");
 
     free(table);
     return 0;
