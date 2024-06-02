@@ -35,6 +35,29 @@ double MeasureSortingTime(
     return sec/trials;
 }
 
+void SaveSortingTime(
+        struct City* table, int n,
+        void (*sort)(struct City*, int, char, char),
+        char mode, char order, int trials, char caption[]) {
+    char filename[BUF_SIZE];
+    sprintf(filename, "out/%s_%c%c_%02d.csv", caption, mode, order, trials);
+    FILE* fp = fopen(filename, "w");
+    int k = 10;
+    double sec;
+    while (1) {
+        if (k > n) {
+            k = n;
+        }
+        sec = MeasureSortingTime(table, k, sort, mode, order, trials);
+        fprintf(fp, "%d,%.9f\n", k, sec);
+        if (k >= n) {
+            break;
+        }
+        k *= 10;
+    }
+    fclose(fp);
+}
+
 int main() {
     char filename[] = "data/worldcities.csv";
 
@@ -43,10 +66,7 @@ int main() {
 
     ReadData(&table, &n, filename);
 
-    printf(
-        "%.9f sec\n",
-        MeasureSortingTime(table, 10, BubbleSort, 'p', 'd', 3));
-    printf("%.9f sec\n", MeasureSortingTime(table, 10, QuickSort, 'p', 'd', 3));
+    SaveSortingTime(table, n, QuickSort, 'p', 'd', 3, "quick");
 
     free(table);
     return 0;
