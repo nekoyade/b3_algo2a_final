@@ -116,3 +116,29 @@ void ShellSort(struct City* table, int n, char mode, char order) {
         gap /= 2;
     }
 }
+
+void QuickSortImpl_(
+        struct City* table, int left, int right, char mode, char order) {
+    if (left >= right) {
+        return;
+    }
+    int i = left;
+    int j = right;
+    struct City pivot;
+    Copy_(&table[i + (j - i)/2], &pivot);
+    do {
+        while (Compare_(&table[i], &pivot, mode, order) == -1) { ++i; }
+        while (Compare_(&table[j], &pivot, mode, order) ==  1) { --j; }
+        if (i <= j) {
+            Swap_(&table[i], &table[j]);
+            ++i;
+            --j;
+        }
+    } while (i <= j);
+    QuickSortImpl_(table, left, j, mode, order);
+    QuickSortImpl_(table, i, right, mode, order);
+}
+
+void QuickSort(struct City* table, int n, char mode, char order) {
+    QuickSortImpl_(table, 0, n - 1, mode, order);
+}

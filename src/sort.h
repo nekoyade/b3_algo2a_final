@@ -17,5 +17,6 @@ void BubbleSort(struct City* table, int n, char mode, char order);
 void SelectionSort(struct City* table, int n, char mode, char order);
 void InsertionSort(struct City* table, int n, char mode, char order);
 void ShellSort(struct City* table, int n, char mode, char order);
+void QuickSort(struct City* table, int n, char mode, char order);
 
 #endif  // A2AF_SORT_H_
