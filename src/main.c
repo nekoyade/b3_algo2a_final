@@ -20,10 +20,16 @@ int main() {
     ReadData(&table, &n, filename);
 
     ClearCounters();
-    HeapSort(table, 100, 'n', 'a');
+    HeapSort(table, n, 'p', 'd');
     PrintCounters();
 
-    DisplayTable(table, n);
+    //DisplayTable(table, n);
+    printf("%d\n", CheckOrder(table, n, 'p', 'd'));
+    printf("%d\n", CheckOrder(table, n, 'p', 'a'));
+    printf("%d\n", CheckOrder(table, n, 'a', 'd'));
+    printf("%d\n", CheckOrder(table, n, 'a', 'a'));
+    printf("%d\n", CheckOrder(table, n, 'n', 'd'));
+    printf("%d\n", CheckOrder(table, n, 'n', 'a'));
 
     free(table);
     return 0;

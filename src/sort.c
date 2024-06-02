@@ -216,3 +216,31 @@ void HeapSort(struct City* table, int n, char mode, char order) {
         HeapSortImpl_(table, 0, i - 1, mode, order);
     }
 }
+
+int CheckOrder(struct City* table, int n, char mode, char order) {
+    for (int i = 1; i < n; ++i) {
+        if (Compare_(&table[i - 1], &table[i], mode, order) == 1) {
+            float a_val, b_val;
+            switch (mode) {
+            case 'a':
+                a_val = table[i - 1].lat;
+                b_val = table[i].lat;
+                break;
+            case 'n':
+                a_val = table[i - 1].lng;
+                b_val = table[i].lng;
+                break;
+            case 'p':
+            default:
+                a_val = table[i - 1].pop;
+                b_val = table[i].pop;
+                break;
+            }
+            printf("    Fault!  ");
+            printf("%f (idx: %d)  ", a_val, i - 1);
+            printf("%f (idx: %d)\n", b_val, i);
+            return 0;
+        }
+    }
+    return 1;
+}
