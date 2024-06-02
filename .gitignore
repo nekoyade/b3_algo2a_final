@@ -1,5 +1,7 @@
 *.exe
 
+.venv/
+
 build/
 data/worldcities.csv
 out/*.csv
