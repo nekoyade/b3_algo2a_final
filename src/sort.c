@@ -3,9 +3,13 @@
  *
  *  2024 Keitaro Kamo (nekoyade)
  *
+ *  Used sample codes in Algorithm 2A lectures as a reference.
+ *
  */
 
 #include "sort.h"
+
+#include <stdlib.h>
 
 #include "data.h"
 
@@ -141,4 +145,42 @@ void QuickSortImpl_(
 
 void QuickSort(struct City* table, int n, char mode, char order) {
     QuickSortImpl_(table, 0, n - 1, mode, order);
+}
+
+void MergeSortImpl_(
+        struct City* table, int left, int right, struct City* work,
+        char mode, char order) {
+    if (left >= right) {
+        return;
+    }
+    int center = left + (right - left)/2;
+    MergeSortImpl_(table, left, center, work, mode, order);
+    MergeSortImpl_(table, center + 1, right, work, mode, order);
+    int i, num;
+    for (i = left, num = 0; i <= center; ++i) {
+        Copy_(&table[i], &work[num++]);
+    }
+    int j = 0;
+    int base = left;
+    while ((i <= right) && (j < num)) {
+        if (Compare_(&work[j], &table[i], mode, order) == 1) {
+            Copy_(&table[i++], &table[base++]);
+        } else {
+            Copy_(&work[j++], &table[base++]);
+        }
+    }
+    while (j < num) {
+        Copy_(&work[j++], &table[base++]);
+    }
+}
+
+void MergeSort(struct City* table, int n, char mode, char order) {
+    struct City* work = malloc(sizeof(struct City)*n);
+    if (work == NULL) {
+        printf("ERROR: Could not allocate memory.\n");
+        free(table);
+        exit(1);
+    }
+    MergeSortImpl_(table, 0, n - 1, work, mode, order);
+    free(work);
 }
