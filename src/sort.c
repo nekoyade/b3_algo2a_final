@@ -90,3 +90,14 @@ void SelectionSort(struct City* table, int n, char mode, char order) {
         Swap_(&table[i], &table[min_idx]);
     }
 }
+
+void InsertionSort(struct City* table, int n, char mode, char order) {
+    for (int i = 1; i < n; ++i) {
+        int j = i;
+        while ((j >= 1) && (Compare_(
+                &table[j - 1], &table[j], mode, order) == 1)) {
+            Swap_(&table[j - 1], &table[j]);
+            --j;
+        }
+    }
+}
