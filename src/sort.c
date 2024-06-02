@@ -101,3 +101,18 @@ void InsertionSort(struct City* table, int n, char mode, char order) {
         }
     }
 }
+
+void ShellSort(struct City* table, int n, char mode, char order) {
+    int gap = n / 2;
+    while (gap > 0) {
+        for (int i = gap; i < n; ++i) {
+            int j = i;
+            while ((j >= gap) && (Compare_(
+                    &table[j - gap], &table[j], mode, order) == 1)) {
+                Swap_(&table[j - gap], &table[j]);
+                j -= gap;
+            }
+        }
+        gap /= 2;
+    }
+}
